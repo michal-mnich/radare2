@@ -470,6 +470,35 @@ EXPECT=<<EOF
 EOF
 RUN
 
+NAME=negative colgrep
+BROKEN=1
+CMDS=<<EOF
+?e hello world~[-2]
+?e hello world~[-1]
+EOF
+EXPECT=<<EOF
+hello
+world
+EOF
+RUN
+
+NAME=negative colgrep
+BROKEN=1
+CMDS=<<EOF
+?e a\na b\na b c~[-3]
+?e a\na b\na b c~[-2]
+?e a\na b\na b c~[-1]
+EOF
+EXPECT=<<EOF
+a
+a
+a
+b
+b
+c
+EOF
+RUN
+
 NAME=count grep
 CMDS=<<EOF
 wx 10203040

@@ -287,6 +287,8 @@ R_API void r_cons_grep_expression(RCons *cons, const char *str) {
 			first = false;
 		}
 while_end:
+		// TODO: allow negative column numbers, just like with `~:` for rows
+		// maybe also use `..` instead of `-` for ranges?
 		ptr2 = strchr (ptr, '[');
 		ptr3 = strchr (ptr, ']');
 		int is_range = 0, num_is_parsed = 0;
